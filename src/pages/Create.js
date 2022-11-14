@@ -1,8 +1,21 @@
+import { useState } from "react"
+
 const Create = () => {
   const [title, setTitle] = useState('')
   const [method, setMethod] = useState('')
   const [rating, setRating] = useState('')
   const [formError, setformError] = useState(null)
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    if (!title || !method || !rating) {
+      setformError('Please fill in all the fields')
+      return
+    }
+
+    console.log(title, method, rating)
+  }
 
   return (
     <div className="page create">
