@@ -1,6 +1,11 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
+// importing supase so we can use it and create new recipes
+import supabase from "../config/supabaseClient"
 
 const Create = () => {
+  const navigate = useNavigate()
+
   const [title, setTitle] = useState('')
   const [method, setMethod] = useState('')
   const [rating, setRating] = useState('')
@@ -14,7 +19,22 @@ const Create = () => {
       return
     }
 
-    console.log(title, method, rating)
+    // data = new row(recipe) we just added if it's successful and an error if it's not
+    const { data, error } = await supabase
+    // from the smoothies table from supabase
+      .from('smoothies')
+    // insert the rows which is always in an array, each object represents a row
+      .insert([{ title, method, rating}])
+
+    if (error) {
+      console.log(error)
+      setformError('Please fill in all the fields')
+    }
+    if (data) {
+      console.log(data)
+      setformError(null)
+      navigate('/')
+    }
   }
 
   return (
