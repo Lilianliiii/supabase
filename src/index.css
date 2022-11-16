@@ -76,6 +76,7 @@ form input, form textarea {
   padding: 6px;
   box-sizing: border-box;
   border: 1px solid #ccc;
+  border-radius: 6px;
   margin: 10px 0 20px 0;
 }
 form button {

@@ -25,6 +25,7 @@ const Create = () => {
       .from('smoothies')
     // insert the rows which is always in an array, each object represents a row
       .insert([{ title, method, rating}])
+      .select()
 
     if (error) {
       console.log(error)
