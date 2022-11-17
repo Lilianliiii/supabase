@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import supabase from "../config/supabaseClient"
 
-const SmoothieCard = ({ smoothie }) => {
+// Need to accept the onDelete prop here in order to update local state in home.js
+const SmoothieCard = ({ smoothie, onDelete }) => {
 
   const handleDelete = async () => {
     const { data, error } = await supabase
@@ -19,6 +20,8 @@ const SmoothieCard = ({ smoothie }) => {
 
       if (data) {
         console.log(data)
+        // Call the onDelete function but handleDelete from home.js needs an id we pass in the smoothie id we just deleted
+        onDelete(smoothie.id)
       }
   }
 
