@@ -6,6 +6,7 @@ const Home = () => {
   const [fetchError, setFetchError] = useState(null)
   const [smoothies, setSmoothies] = useState(null)
   // Need to update the local state here above inside the Home component when we delete a smoothie to match the database from supabase
+  const [orderBy, setOrderBy ] = useState('created_at') // The property here has to match column name from supabase (created_at, title, method or rating)
 
   // The handleDelete function's job is to look through the smoothies and update them based on the smoothie we just deleted so needs to take in an id argument and that's the id of the smoothie we want to delete
   const handleDelete = (id) => {
@@ -45,6 +46,13 @@ const Home = () => {
       {fetchError && (<p>{fetchError}</p>)}
       {smoothies && (
         <div className="smoothies">
+          <div className="order-by">
+            <p>Order by:</p>
+            <button onClick={() => setOrderBy('created_at')}>Time Created</button>
+            <button onClick={() => setOrderBy('title')}>Title</button>
+            <button onClick={() => setOrderBy('rating')}>Rating</button>
+            {orderBy}
+          </div>
           <div className="smoothie-grid">
             {smoothies.map(smoothie => (
               <SmoothieCard key={smoothie.id} smoothie={smoothie}
