@@ -9,9 +9,9 @@ const Auth = () => {
   // const [formError, setformError] = useState(null)
 
   const login = async (email, password) => {
-
+    console.log(email, password)
     try {
-      const {error} = await supabase.auth.signIn(email, password)
+      const {error} = await supabase.auth.signInWithPassword({email, password})
       if(error) throw error
       alert("Logged in!")
       navigate('/')
@@ -19,13 +19,24 @@ const Auth = () => {
     catch(error){
       alert(error.message)
     }
+    // const { user, error } = await supabase.auth.signInWithPassword({email, password})
 
+    // if (error) {
+    //   console.log(error)
+    //   alert("You do not have an account here, please sign up!")
+    // }
+    // if (user) {
+    //   console.log(user)
+    //   alert("Logged in!")
+    //   navigate('/')
+    // }
   }
 
   const signUp = async (email, password) => {
+    console.log(email, password)
 
     try {
-      const {error} = await supabase.auth.signUp(email, password)
+      const {error} = await supabase.auth.signUp({email, password})
       if(error) throw error
       alert("Logged in!")
       navigate('/')
@@ -33,6 +44,18 @@ const Auth = () => {
     catch(error){
       alert(error.message)
     }
+
+    // const { error } = await supabase.auth.signUp({email, password})
+
+    // if (error) {
+    //   console.log(error)
+    //   alert(error.message)
+    // }
+    // if (user) {
+    //   console.log(user)
+    //   alert("You are now signed up!")
+    //   navigate('/')
+    // }
 
   }
 
