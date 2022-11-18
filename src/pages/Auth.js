@@ -16,6 +16,16 @@ function Login() {
     }
   })
 
+  return(
+    <div className="App">
+      <header className="App-header">
+        <Auth
+          supabaseClient={supabase}
+        />
+      </header>
+    </div>
+    )
+
 }
 
 export default Login
