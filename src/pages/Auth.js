@@ -8,7 +8,7 @@ const supabase = createClient(
   process.env.REACT_APP_ANON_KEY
 )
 
-function Login() {
+const Login = () => {
   const navigate = useNavigate()
 
   // Using supabase authorization functions
