@@ -1,13 +1,31 @@
-import { createClient } from '@supabase/supabase-js'
 import { useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
+
+import { useAuth } from '../pages/Auth'
 
 const Login = () => {
   const emailRef = useRef()
   const passwordRef = useRef()
 
+  const { signIn } = useAuth()
+  const navigate = useNavigate()
+
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+        // Get email and password input values
+        const email = emailRef.current.value
+        const password = passwordRef.current.value
+
+        // Calls 'signUp' function from the context
+        const { error } = await signIn({ email, password })
+
+        if (error) {
+          alert('error signing in')
+        } else {
+          // Redirect user to Dashboard
+          navigate('/')
+        }
   }
 
   return (
