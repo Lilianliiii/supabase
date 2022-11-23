@@ -125,3 +125,7 @@ form button {
   font-family: Poppins;
   cursor: pointer;
 }
+
+.App-header {
+  font-family: 'Poppins';
+}
