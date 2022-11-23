@@ -11,7 +11,7 @@ const Signup = () => {
   }
 
   return (
-    <div>
+    <div className="page signup">
       <form onSubmit={handleSubmit}>
         <label htmlFor="input-email">Email</label>
         <input id="input-email" type="email" ref={emailRef} />
@@ -19,13 +19,12 @@ const Signup = () => {
         <label htmlFor="input-password">Password</label>
         <input id="input-password" type="password" ref={passwordRef} />
 
-        <br />
+        <p>
+        Already have an account? <Link to="/login">Log In</Link>
+        </p>
 
         <button type="submit">Sign up</button>
       </form>
-      <p>
-        Already have an account? <Link to="/login">Log In</Link>
-      </p>
 
     </div>
   )
