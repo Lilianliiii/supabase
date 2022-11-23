@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import { AuthProvider } from './pages/Auth'
 
 // pages
 import Home from "./pages/Home"
@@ -20,12 +21,14 @@ function App() {
         <Link to="/profile">Profile</Link>
       </nav>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />}/>
-        <Route path='/signup' element={<Signup />}/>
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/create" element={<Create />} />
-        <Route path="/:id" element={<Update />} />
+        {/* <AuthProvider> */}
+          <Route path="/" element={<Home />} />
+          <Route path="/create" element={<Create />} />
+          <Route path="/:id" element={<Update />} />
+          <Route path="/login" element={<Login />}/>
+          <Route path='/signup' element={<Signup />}/>
+          <Route path="/profile" element={<Profile />} />
+        {/* </AuthProvider> */}
       </Routes>
     </BrowserRouter>
   );
