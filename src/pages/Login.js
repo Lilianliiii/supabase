@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 
-import { useAuth } from '../pages/Auth'
+import { useAuth } from './Auth'
 
 const Login = () => {
   const emailRef = useRef()
