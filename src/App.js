@@ -27,7 +27,7 @@ function App() {
           <Route path="/:id" element={<Update />} />
           <Route path="/login" element={<Login />}/>
           <Route path='/signup' element={<Signup />}/>
-          <Route path="/profile" element={<Profile />} />
+          <Route exact path="/profile" element={<Profile />} />
         {/* </AuthProvider> */}
       </Routes>
     </BrowserRouter>
